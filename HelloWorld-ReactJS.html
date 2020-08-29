@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>intro code to react JS</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js">
+      //to create react elements
+    </script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js">
+      //to render those elements to DOM node
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/javascript">
+      const rootelement = document.getElementById("root");
+      const helloElement = React.createElement("div", {
+        children: "hello World",
+        className: "Container",
+      }); // method 1, textContent is children in react
+      const byeElement = React.createElement(
+        "h1",
+        {
+          className: "container",
+        },
+        "Good ",
+        " Bye"
+      ); // Method 2, children can be passed as third argument to the create element (i strings as 2+i th  arguments)
+      const array = React.createElement("div", {
+        children: ["hello", " ", "world", "hi"],
+        className: "container",
+      }); // method 3, multiple children can be passed in an object as an array
+      const span = React.createElement("div", {
+        children: React.createElement("span", null, "Hello World!"),
+        className: "container",
+      }); // method 4, we can create an element and assign it to children
+      ReactDOM.render(helloElement, rootelement);
+      ReactDOM.render(byeElement, rootelement);
+      ReactDOM.render(array, rootelement);
+      ReactDOM.render(span, rootelement);
+    </script>
+  </body>
+</html>
