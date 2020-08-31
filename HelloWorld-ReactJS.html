@@ -34,7 +34,7 @@
         className: "container",
       }); // method 4, we can create an element and assign it to children
       ReactDOM.render(helloElement, rootelement);
-      ReactDOM.render(byeElement, rootelement);
+      ReactDOM.render(byeElement, rootelement); // this will overwrite first element as there is only one div (rendering elements side by side in next pages)
       ReactDOM.render(array, rootelement);
       ReactDOM.render(span, rootelement);
     </script>
