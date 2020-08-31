@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>intro to JSX</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="second"></div>
+    <div id="third"></div>
+    <script type="text/babel">
+      // script type should be babel(JSX compiler)
+      const rootElement = document.getElementById("root");
+      const secondRoot = document.getElementById("second");
+      const thirdRoot = document.getElementById("third");
+      const firstElement = (
+        <div className="methodOne">
+          <h1>This is the text being displayed using JSX</h1>
+        </div>
+      );
+      const children = "Hello World";
+      const myChild = " ,this is fun!!!!!!!!!!!";
+      const MyclassName = "methodTwo";
+      const secondElement = (
+        <div className="MyclassName">
+          {children} {myChild}
+        </div>
+      ); //anything between {} is javaScript expression which takes the value assigned to that variable
+      const props = { children, MyclassName };
+      const thirdElement = <div id="app-rrot" {...props} />; // we can use /> insted of ></div> as this is not html but JSX, ... means spread
+      ReactDOM.render(firstElement, rootElement);
+      ReactDOM.render(secondElement, secondRoot);
+      ReactDOM.render(thirdElement, thirdRoot);
+    </script>
+  </body>
+</html>
