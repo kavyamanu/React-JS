@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reusable component</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+    <script type="text/babel">
+      const rootElement = document.getElementById("root");
+      const Message = (prop) => <div className="message">{prop.children}</div>; //arrow function 
+      const element = (
+        <div className="container">
+          <Message>Hello <span>World</span></Message>
+          <Message>
+            <Message children="Have a great day!!" />
+          </Message>
+        </div>
+      );
+
+      ReactDOM.render(element, rootElement);
+    </script>
+  </body>
+</html>
