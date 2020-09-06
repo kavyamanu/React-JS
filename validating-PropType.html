@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Validating PropType</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+    <script src="https://unpkg.com/prop-types@15.6.1/prop-types.js">//does the same job as Props object</script>
+    <script type="text/babel">
+      const rootElement = document.getElementById("root");
+      function Support({ firstElement, lastElement }) {
+        return (
+          <div>
+            Hello {firstElement}
+            {lastElement}😊
+          </div>
+        );
+      }
+      const Props = {
+          string(prop, propName, component) {
+          if (typeof prop[propName] !== "string") {
+            return new Error(
+              `Hey!, the component ${component} requires ${propName} to be a string but not ${typeof propName}`
+            );
+          }
+        },
+      }
+      Support.propTypes = {
+        firstElement : Props.string,
+        lastElement : Props.string
+        //firstElement: PropTypes.string.isRequired, 
+        //lastElement: PropTypes.string.isRequired <== syntax in case using prop-types package 
+
+      };
+
+      const element = <Support firstElement={"kavya"} />;
+
+      ReactDOM.render(element, rootElement);
+    </script>
+  </body>
+</html>
