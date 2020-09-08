@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Styling React Elements</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+    <style>
+      .box {
+        border: 2px solid black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .box--small {
+        width: 100px;
+        height: 100px;
+      }
+
+      .box--medium {
+        width: 150px;
+        height: 200px;
+      }
+      .box--big {
+        width: 200px;
+        height: 300px;
+      }
+    </style>
+    <script type="text/babel">
+      const rootElement = document.getElementById("root");
+
+      function Box({ className = "", style, size, color, ...rest }) {
+        const sizeClassname = size ? `box--${size}` : "";
+        //  const selectColor =  {backgroundColor: `"${color}"`};
+        return (
+          <div
+            className={`box ${className} ${sizeClassname}`}
+            style={{
+              fontStyle: "italic",
+              backgroundColor: `${color}`,
+              ...style,
+            }}
+            {...rest}
+          />
+        );
+      }
+      const element = (
+        <div>
+          <Box size="big" color="lightblue">
+            i am a big blue box
+          </Box>
+          <Box size="small" color="lightgreen">
+            i am a small green box
+          </Box>
+          <Box size="medium" color="pink">
+            i am a medium pink box
+          </Box>
+        </div>
+      );
+
+      ReactDOM.render(element, rootElement);
+    </script>
+  </body>
+</html>
