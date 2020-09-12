@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Event handling in React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+    <script type="text/babel">
+      const setUp = { count: 0, username: "" };
+      //setUp object will be updated
+      function refresh(newState) {
+        Object.assign(setUp, newState);
+        addRender();
+      }
+      function App() {
+        function handlingClick() {
+          refresh({ count: setUp.count + 1 });
+        }
+        function handlingInput(e) {
+          refresh({ username: e.target.value });
+        }
+        return (
+          <div>
+            <p>you clicked me :{setUp.count} times</p>
+            <button onClick={handlingClick}>clickme</button>
+            <p></p>
+            <p>Hello : {setUp.username}</p>
+            <input onChange={handlingInput} />
+          </div>
+        );
+      }
+      function addRender() {
+        ReactDOM.render(<App />, document.getElementById("root"));
+      }
+      addRender();
+    </script>
+  </body>
+</html>
