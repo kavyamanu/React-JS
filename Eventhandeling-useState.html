@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Eventhandeling with useState</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+    <script type="text/babel">
+      const rootElement = document.getElementById("root");
+      function Element() {
+        const setarray = React.useState("");
+        var name = setarray[0]; // initial name
+        var setName = setarray[1]; //new name which you enter
+        var [age, setAge] = React.useState(""); //alternate way of using useState
+        function handelChange(event) {
+          name = setName(event.target.value); //replacing old name with new one
+        }
+        function handelChange1(event) {
+          age = setAge(event.target.value); //replacing old name with new one
+        }
+        return (
+          <div>
+            <form>
+              <label htmlFor="name"> Name:</label>
+              <p />
+              <input id="name" onChange={handelChange}></input>
+            </form>
+            hello {name ? <strong>{name}</strong> : "type your name"}
+            <p />
+            <form>
+              <label htmlFor="age"> Age:</label>
+              <p />
+              <input id="age" onChange={handelChange1}></input>
+            </form>
+            {age ? (
+              <strong>
+                {name} is {age} years old
+              </strong>
+            ) : (
+              "What is your age?"
+            )}
+          </div>
+        );
+      }
+      ReactDOM.render(<Element />, rootElement);
+    </script>
+  </body>
+</html>
