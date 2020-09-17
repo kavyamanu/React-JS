@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reusable Custome hooks</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+    <script type="text/babel">
+      function useStorageHooks(key, defaultValue = "") {
+        //function name can be anything
+        var [state, setState] = React.useState(
+          window.localStorage.getItem(key) || defaultValue
+        );
+
+        React.useEffect(() => {
+          window.localStorage.setItem(key, state);
+          // Make sure to add key to our array
+        }, [key, state]);
+        return [state, setState]; // return statement
+      }
+      function Element() {
+        // calling useStorageHooks function
+        var [name, setName] = useStorageHooks("name");
+        function handleName(event) {
+          name = setName(event.target.value);
+        }
+
+        return (
+          <div>
+            <form>
+              <label htmlFor="name">Name:</label>
+              <p />
+              <input id="name" onChange={handleName} />
+              <p />
+              {name ? <strong> Hello {name}</strong> : "please enter your name"}
+            </form>
+          </div>
+        );
+      }
+      ReactDOM.render(<Element />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
