@@ -9,21 +9,28 @@
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
     <script type="text/babel">
-    const rootelement = document.getElementById("root"); // React.Fragment is a container element like "div"
+      const rootelement = document.getElementById("root"); // React.Fragment is a container element like "div"
       //react
-      const hellowElement = React.createElement('span',null,"Hello");
-      const worldElement = React.createElement('span',null,"World");
-      const element = React.createElement('React.Fragment',null,helloElement, ' ',worldElement);
+      const helloElement = React.createElement("span", null, "Hello");
+      const worldElement = React.createElement("span", null, "World");
+      const element = React.createElement(
+        "React.Fragment",
+        null,
+        helloElement,
+        " ",
+        worldElement
+      );
       //JSX
       const elementX = (
         <React.Fragment>
           <span>Hello</span> <span>World</span>
         </React.Fragment>
-      );//<React.Fragment> is same as <>
-        const elementY = 
+      ); //<React.Fragment> is same as <>
+      const elementY = (
         <>
-        <span>Hellow</span> <span>World</span>
+          <span>Hello</span> <h1>World</h1>
         </>
+      );
 
       ReactDOM.render(elementY, rootelement);
     </script>
